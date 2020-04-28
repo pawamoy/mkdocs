@@ -387,3 +387,9 @@ class ErrorFilter(logging.Filter):
 # Global instances to use throughout package
 warning_filter = WarningFilter()
 error_filter = ErrorFilter()
+
+
+def get_logger(name):
+    logger = logging.getLogger(name)
+    logger.addFilter(warning_filter)
+    logger.addFilter(error_filter)

@@ -1,15 +1,11 @@
 import fnmatch
 import os
-import logging
 from functools import cmp_to_key
 from urllib.parse import quote as urlquote
 
 from mkdocs import utils
 
-
-log = logging.getLogger(__name__)
-log.addFilter(utils.warning_filter)
-log.addFilter(utils.error_filter)
+log = utils.get_logger(__name__)
 
 
 class Files:

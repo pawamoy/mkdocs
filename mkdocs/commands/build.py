@@ -25,10 +25,8 @@ class DuplicateFilter:
         return rv
 
 
-log = logging.getLogger(__name__)
+log = utils.get_logger(__name__)
 log.addFilter(DuplicateFilter())
-log.addFilter(utils.warning_filter)
-log.addFilter(utils.error_filter)
 
 
 def get_context(nav, files, config, page=None, base_url=''):
