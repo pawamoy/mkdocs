@@ -28,6 +28,7 @@ class DuplicateFilter:
 log = logging.getLogger(__name__)
 log.addFilter(DuplicateFilter())
 log.addFilter(utils.warning_filter)
+log.addFilter(utils.error_filter)
 
 
 def get_context(nav, files, config, page=None, base_url=''):
@@ -297,7 +298,11 @@ def build(config, live_server=False, dirty=False):
     # Run `post_build` plugin events.
     config['plugins'].run_event('post_build', config=config)
 
-    if config['strict'] and utils.warning_filter.count:
+    if utils.error_filter.count:
+        raise SystemExit('\nExited with {} errors and {} warnings.'.format(
+            utils.error_filter.count, utils.warning_filter.count)
+        )
+    elif utils.warning_filter.count and config['strict']:
         raise SystemExit('\nExited with {} warnings in strict mode.'.format(utils.warning_filter.count))
 
     log.info('Documentation built in %.2f seconds', time() - start)

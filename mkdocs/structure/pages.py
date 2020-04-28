@@ -10,10 +10,11 @@ from markdown.treeprocessors import Treeprocessor
 from markdown.util import AMP_SUBSTITUTE
 
 from mkdocs.structure.toc import get_toc
-from mkdocs.utils import meta, get_markdown_title, warning_filter
+from mkdocs.utils import error_filter, meta, get_markdown_title, warning_filter
 
 log = logging.getLogger(__name__)
 log.addFilter(warning_filter)
+log.addFilter(error_filter)
 
 
 class Page:

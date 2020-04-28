@@ -374,5 +374,16 @@ class WarningFilter(logging.Filter):
         return True
 
 
-# A global instance to use throughout package
+class ErrorFilter(logging.Filter):
+    """ Counts all ERROR level log messages. """
+    count = 0
+
+    def filter(self, record):
+        if record.levelno == logging.ERROR:
+            self.count += 1
+        return True
+
+
+# Global instances to use throughout package
 warning_filter = WarningFilter()
+error_filter = ErrorFilter()

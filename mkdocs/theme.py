@@ -8,6 +8,7 @@ from mkdocs.config.base import ValidationError
 
 log = logging.getLogger(__name__)
 log.addFilter(utils.warning_filter)
+log.addFilter(utils.error_filter)
 
 
 class Theme:
