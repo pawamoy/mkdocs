@@ -7,3 +7,7 @@ class MkDocsException(ClickException):
 
 class ConfigurationError(MkDocsException):
     """Error in configuration"""
+
+
+class BuildError(MkDocsException):
+    """Error while building"""
