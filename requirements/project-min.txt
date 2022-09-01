@@ -1,5 +1,5 @@
 click==7.0
-Jinja2==2.11.1
+Jinja2==2.11.3
 markupsafe==2.0.1
 Markdown==3.3
 PyYAML==5.1
